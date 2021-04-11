@@ -1,0 +1,113 @@
+.navbar
+{
+    height: 90vh;
+    box-shadow: 0px 5px 15px -2px #afafaf;
+    width: 250px;
+    position: fixed;
+    top: 5vh;
+    z-index: 1000;
+    background: #642B73;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to bottom, #C6426E, #642B73);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to bottom, #C6426E, #642B73); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+    /* margin: 30px 5% 0 5%; */
+    display: flex;
+    flex-direction: column;
+    /* padding: 10px 20px; */
+    border-radius: 5px;
+    justify-content: space-between;
+    align-items: center;
+    align-self: start;
+
+}
+
+.profile_details
+{
+    display: flex;
+    flex-direction: column;
+    /* padding: 10px 20px; */
+    border-radius: 5px;
+    /* justify-content: space-between; */
+    align-items: center;
+}
+
+.avatar
+{
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    margin-top: 50px;
+}
+
+.app_name
+{
+    font-size: 30px;
+    color: #ffffff;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.app_name div
+{
+    font-size: 60px;
+    transform: rotate(40deg) scaleX(-1);
+    padding: 0 18px 9px 13px;;
+}
+
+.options
+{
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.username
+{
+    font-size: 16px;
+    color: white;
+    font-weight: 500;
+    /* border-right: 1px solid white; */
+    /* padding-right: 20px; */
+    text-align: center;
+    padding-top: 30px;
+}
+
+.username span
+{
+    font-size: 22px;
+    font-weight: 300;
+}
+
+.links
+{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    width: 100%;
+    padding-bottom: 20px;
+}
+
+.links span
+{
+    font-size: 13px;
+    font-weight: 500;
+    /* margin-left: 15px; */
+    cursor: pointer;
+    outline: none;
+    color: #ffffff;
+    padding: 10px 0;
+}
+
+.links span:hover,
+.link_selected
+{
+    background: #00000030;
+}
+
+.links span.active
+{
+    /* color: var(--primary-light); */
+    font-size: 17px;
+}

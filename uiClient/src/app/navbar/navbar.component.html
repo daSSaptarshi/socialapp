@@ -1,0 +1,16 @@
+<div class="navbar">
+    <div class="profile_details">
+        <img src="../../assets/avatar.png" alt="" class="avatar">
+        <div class="username">Welcome<br> <span>{{username}}</span> </div>
+    </div>
+    
+    <!-- <div class="app_name">Socia <div>L</div>ist</div> -->
+    <div class="options">
+        
+        <div class="links">
+            <span routerLink="/home" routerLinkActive="active" *ngIf="isAdmin == 'true'" routerLinkActive="link_selected" >Home</span>
+            <span routerLink="/approval" routerLinkActive="active" *ngIf="isAdmin == 'true'" routerLinkActive="link_selected">Pending For Approval</span>
+            <span (click)="signout()">Sign Out</span>
+        </div>
+    </div>
+</div>
