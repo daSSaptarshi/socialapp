@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
 })
 export class UserService {
 
-  private baseUrl = "http://localhost:3000/app/profile";
+  private baseUrl = "/app/profile";
   private urls = {
     register : '/register',
     signin : '/signin',

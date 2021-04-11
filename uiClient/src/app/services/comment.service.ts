@@ -5,7 +5,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class CommentService {
-  private baseUrl = "http://localhost:3000/app/comment";
+  private baseUrl = "/app/comment";
   private urls = {
     add         : `/add`,
     getAll      : `/getAll/`

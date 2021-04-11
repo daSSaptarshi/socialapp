@@ -6,7 +6,7 @@ import { Injectable } from '@angular/core';
 })
 export class PostService {
 
-  private baseUrl = "http://localhost:3000/app/post";
+  private baseUrl = "/app/post";
   private urls = {
     create      : `/create`,
     update      : `/update`,
