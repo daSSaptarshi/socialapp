@@ -16,7 +16,21 @@ approuter.post(CONFIG.apis.apiForComment.add, async (req, res) =>
                 creater: req.body.creater
             }
         )
-        res.status(201).json(await newComment.save())
+        await newComment.save()
+        res.status(200).send(
+            await Comment.aggregate([
+                { $match : { for_post : ObjectId(req.body.postId) } },
+                {
+                    $lookup:
+                    {
+                        from: "users",
+                        localField: "creater",
+                        foreignField: "_id",
+                        as: "creater_details"
+                    }
+                }
+            ])
+        );
     }
     catch (err) {
         res.status(500).json({ message: "Error occured in creating new comment", error: err.message })

@@ -15,6 +15,7 @@ import { AuthGuard } from './auth/auth.guard';
 import { CommentService } from './services/comment.service';
 import { PostService } from './services/post.service';
 import { ApproveComponent } from './approve/approve.component';
+import { ConfigService } from './services/config.service';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,7 @@ import { ApproveComponent } from './approve/approve.component';
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [UserService, AuthGuard, CommentService, PostService],
+  providers: [UserService, AuthGuard, CommentService, PostService, ConfigService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

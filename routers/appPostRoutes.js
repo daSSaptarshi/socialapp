@@ -7,6 +7,17 @@ const CONFIG = require('../config');
 const Post = require('../models/PostSchema');
 
 // Create Post Route
+approuter.get(CONFIG.apis.apiForPost.count, async (req,res) =>
+{
+    try 
+    {
+        res.status(200).send({ postCount : await (await Post.find({})).length })
+    } 
+    catch (error) {
+        res.status(500).json({ message : err.message})
+    }
+})
+
 approuter.post(CONFIG.apis.apiForPost.create, async (req, res) => {
     try {
         let newPost = new Post(
@@ -14,7 +25,9 @@ approuter.post(CONFIG.apis.apiForPost.create, async (req, res) => {
                 title: req.body.title,
                 content: req.body.content,
                 creater: req.body.creater,
-                is_advertisement: req.body.is_advertisement
+                is_advertisement: req.body.is_advertisement,
+                image : req.body.image,
+                is_approved : req.body.role == 'admin'
             }
         )
         res.status(201).json(await newPost.save())

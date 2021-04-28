@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { ConfigService } from './config.service';
 
 @Injectable({
   providedIn: 'root'
@@ -14,11 +15,13 @@ export class PostService {
     getAll      : `/getAll`,
     getAllPending: `/getAllPending`,
     upvote      : `/upvote/`,
-    approve     : `/approve/`
+    approve     : `/approve/`,
+    count       : `/getPostCount`
   }
   private isLoggedIn = false;
 
-  constructor(public httpservice: HttpClient ) {
+  constructor(public httpservice: HttpClient, configService : ConfigService ) {
+    this.baseUrl = `${configService.config.apiBaseURL}${this.baseUrl}`
    }
   
   getAllPosts()
@@ -44,5 +47,10 @@ export class PostService {
   approvePost(postId)
   {
     return this.httpservice.patch(`${this.baseUrl}${this.urls.approve}${postId}`, {});
+  }
+
+  getPostCount()
+  {
+    return this.httpservice.get(`${this.baseUrl}${this.urls.count}`)
   }
 }

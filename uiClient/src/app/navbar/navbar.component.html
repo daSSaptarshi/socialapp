@@ -3,14 +3,26 @@
         <img src="../../assets/avatar.png" alt="" class="avatar">
         <div class="username">Welcome<br> <span>{{username}}</span> </div>
     </div>
+
+    <div *ngIf="role== 'admin'">
+        <div style="text-align: center; font-size: 18px; color: white;">
+            <div style="font-size: 50px !important;">{{userCount}}</div>
+            <div>Number Of Users</div>  
+        </div>
+        <!-- <br>
+        <div style="text-align: center; font-size: 18px; color: white;">
+            <div style="font-size: 50px !important;">{{postCount}}</div>
+            <div>Number Of Posts</div>  
+        </div> -->
+    </div>
     
     <!-- <div class="app_name">Socia <div>L</div>ist</div> -->
     <div class="options">
         
         <div class="links">
-            <span routerLink="/home" routerLinkActive="active" *ngIf="isAdmin == 'true'" routerLinkActive="link_selected" >Home</span>
-            <span routerLink="/approval" routerLinkActive="active" *ngIf="isAdmin == 'true'" routerLinkActive="link_selected">Pending For Approval</span>
-            <span (click)="signout()">Sign Out</span>
+            <span routerLink="/home" routerLinkActive="active" *ngIf="isAdmin == 'true'" routerLinkActive="link_selected" > <i class="fa fa-home"></i> <br> Home</span>
+            <span routerLink="/approval" routerLinkActive="active" *ngIf="isAdmin == 'true'" routerLinkActive="link_selected"><i class="fa fa-check"></i> <br>Pending For Approval</span>
+            <span (click)="signout()"> <i class="fa fa-sign-out-alt"></i> <br>  Sign Out</span>
         </div>
     </div>
 </div>

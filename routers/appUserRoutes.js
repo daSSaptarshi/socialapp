@@ -4,6 +4,17 @@ const approuter        = express.Router();
 const CONFIG        = require('../config');
 const User          = require('../models/UserSchema');
 
+approuter.get(CONFIG.apis.apiForProfile.count, async (req, res) =>
+{
+    try 
+    {
+        res.status(200).send({ userCount : await (await User.find({})).length })
+    } 
+    catch (error) {
+        res.status(500).json({ message : err.message})
+    }
+})
+
 approuter.post(CONFIG.apis.apiForProfile.register, async (req, res) =>
 {
     try
@@ -11,7 +22,7 @@ approuter.post(CONFIG.apis.apiForProfile.register, async (req, res) =>
         const user = await User.find({ email : req.body.email});
         if(user.length > 0)
         {
-            res.status(400).json({ message : "email already registered"})
+            res.status(400).json({ message : "Email already registered"})
         }
         else
         {
@@ -31,7 +42,7 @@ approuter.post(CONFIG.apis.apiForProfile.register, async (req, res) =>
     }
     catch(err)
     {
-        res.status(400).json({ message : err.message})
+        res.status(500).json({ message : err.message})
     }
     
 })
@@ -65,7 +76,8 @@ approuter.post(CONFIG.apis.apiForProfile.signin, async (req, res) =>
                 name : user[0].name,
                 id : user[0]._id,
                 isLoggedIn : true,
-                isAdmin : user[0].email == "admin@admin.admin"
+                isAdmin : user[0].role == "admin",
+                role : user[0].role
             })
             else
                 res.status(401).json({message : "Password does not mach"})

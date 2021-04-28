@@ -25,6 +25,15 @@ export class LoginComponent implements OnInit {
   onSubmitLoginForm()
   {
     this.userService.signinUser(this.loginForm.value)
+    .subscribe((data) =>
+    {
+      this.router.navigate(['/posts']);
+      sessionStorage.setItem("email", data["username"])
+      sessionStorage.setItem("userId", data["id"])
+      sessionStorage.setItem("isAdmin", data["isAdmin"])
+      sessionStorage.setItem("userName", data['name'])
+      sessionStorage.setItem("role", data['role'])
+    });
   }
 
 }

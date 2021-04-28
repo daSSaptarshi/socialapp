@@ -9,6 +9,7 @@ import { PostService } from '../services/post.service';
 export class ApproveComponent implements OnInit {
 
   posts_data:any = [];
+  refreshingData = true;
   @Output() onApprove = new EventEmitter();
   constructor(private postService:PostService) { }
 
@@ -18,10 +19,12 @@ export class ApproveComponent implements OnInit {
 
   loadData = () =>
   {
+    this.refreshingData = true
     this.postService.getPendingPosts()
     .subscribe(data =>
       {
-        console.log(data)
+        this.refreshingData = false
+        // console.log(data)
         this.onApprove.emit();
         this.posts_data = data;
       })

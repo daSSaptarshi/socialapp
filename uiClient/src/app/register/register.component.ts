@@ -34,13 +34,10 @@ export class RegisterComponent implements OnInit
 
   onSubmitRegisterForm()
   {
-    this.userService.registerUser(this.registerForm.value).subscribe((data) =>
+    this.userService.registerUser(this.registerForm.value)
+    .subscribe((data) =>
     {
-      console.log("fvfdv")
-      this.router.navigate(['/home']);
-      sessionStorage.setItem("email", data["user"]["username"])
-      sessionStorage.setItem("userId", data["user"]["id"])
-      this.userService.setIsLoggedIn(true);
+
     })
   }
 

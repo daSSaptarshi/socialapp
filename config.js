@@ -1,12 +1,13 @@
 const CONFIG = {
-    MONGO       : 'mongodb+srv://dbuser:abcd@mastercluster.usel1.mongodb.net/socialawareone?retryWrites=true&w=majority',
+    MONGO       : 'mongodb+srv://dbuser:abcd@mastercluster.usel1.mongodb.net/social-awarness-app?retryWrites=true&w=majority',
     PORT        :  process.env.PORT || 3000,
     apis        : {
         apiForProfile :
             {
                 register    : `/register`,
                 signin      : `/signin`,
-                details     : `/details`
+                details     : `/details`,
+                count       : `/getUserCount`
             },
         apiForPost    :
             {
@@ -16,7 +17,8 @@ const CONFIG = {
                 getAll      : `/getAll`,
                 getAllPending: `/getAllPending`,
                 upvote      : `/upvote/:id`,
-                approve     : `/approve/:id`
+                approve     : `/approve/:id`,
+                count       : `/getPostCount`
             },
         apiForComment :
         {

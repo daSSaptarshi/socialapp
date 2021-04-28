@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import { ConfigService } from './config.service';
 
 @Injectable({
   providedIn: 'root'
@@ -11,14 +12,16 @@ export class UserService {
   private urls = {
     register : '/register',
     signin : '/signin',
-    details : '/details'
+    details : '/details',
+    getCount : '/getUserCount'
   }
   private isLoggedIn = false;
 
   httpService;
 
-  constructor(public httpservice : HttpClient, private router:Router ) {
+  constructor(public httpservice : HttpClient, private router:Router, configService : ConfigService ) {
     this.httpService = httpservice;
+    this.baseUrl = `${configService.config.apiBaseURL}${this.baseUrl}`
    }
 
   registerUser(data)
@@ -28,16 +31,7 @@ export class UserService {
 
   signinUser(data)
   {
-    this.httpservice.post(`${this.baseUrl}${this.urls.signin}`, data)
-    .subscribe((data) =>
-    {
-      this.router.navigate(['/posts']);
-      sessionStorage.setItem("email", data["username"])
-      sessionStorage.setItem("userId", data["id"])
-      sessionStorage.setItem("isAdmin", data["isAdmin"])
-      sessionStorage.setItem("userName", data['name'])
-      
-    });
+    return this.httpservice.post(`${this.baseUrl}${this.urls.signin}`, data)
   }
 
   signoutUser()
@@ -62,5 +56,10 @@ export class UserService {
   {
     console.log(this.isLoggedIn)
     return this.isLoggedIn
+  }
+
+  getUserCount()
+  {
+    return this.httpservice.get(`${this.baseUrl}${this.urls.getCount}`);
   }
 }

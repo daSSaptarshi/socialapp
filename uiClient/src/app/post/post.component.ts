@@ -46,7 +46,7 @@ export class PostComponent implements OnInit {
     .subscribe(
       data =>
       {
-        this.loadData();
+        // this.loadData();
         this.comments = data;
       }
     );
@@ -64,14 +64,13 @@ export class PostComponent implements OnInit {
 
   onCommentFormSubmit()
   {
-    console.log("sdssdvs")
     this.commentForm.value["postId"] = this.post._id;
     this.commentForm.value["creater"] = sessionStorage.getItem("userId")
     this.commentService.addComment(this.commentForm.value)
     .subscribe(
       data =>
       {
-        this.post.is_approved = true
+        this.comments = data
       }
     )
   }

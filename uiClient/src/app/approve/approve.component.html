@@ -1,12 +1,17 @@
 
 <div class="container">
     <navbar></navbar>
-    <div *ngIf="posts_data.length < 1" style="font-size: 30px; color : #7f7f7f; padding-top: 30px;">There are no post to Aprrove. Create One</div>
-    <app-post *ngFor="let post of posts_data" 
+
+    
+    <div>
+        <div class="refreshing_message" *ngIf='refreshingData'> <i class="fa fa-spinner"></i> &nbsp; Loading Data</div>
+        <div *ngIf="posts_data.length < 1 && !refreshingData" style="font-size: 30px; color : #7f7f7f; padding-top: 30px;">There are no post to Aprrove. Create One</div>
+        <app-post *ngFor="let post of posts_data" 
             [loadData]="loadData" 
             [post]="post" 
             [forApproval]="true" 
             [isAdvertisement]="post.is_advertisement">
             
     </app-post>
+    </div>
 </div>

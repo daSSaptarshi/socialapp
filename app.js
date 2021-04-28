@@ -11,7 +11,8 @@ const appPort          = CONFIG.PORT;
 const appOne           = express();
 
 appOne.use(cors());
-appOne.use(bodyParser.urlencoded({ extended: false }));
+appOne.use(bodyParser.urlencoded({ extended: false, limit : '50mb' }));
+appOne.use(bodyParser.json({limit: '50mb'}));
 appOne.use(express.json());
 
 appOne.use('/app/profile', require('./routers/appUserRoutes'));

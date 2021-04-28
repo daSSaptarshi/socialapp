@@ -1,5 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+// import config from '../'
+import { ConfigService } from './config.service';
 
 @Injectable({
   providedIn: 'root'
@@ -14,8 +16,9 @@ export class CommentService {
 
   httpService;
 
-  constructor(public httpservice : HttpClient ) {
+  constructor(public httpservice : HttpClient, configService : ConfigService ) {
     this.httpService = httpservice;
+    this.baseUrl = `${configService.config.apiBaseURL}${this.baseUrl}`
    }
 
   addComment(data)

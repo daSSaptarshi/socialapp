@@ -60,11 +60,13 @@
 
 .post_details
 {
-    font-size: 14px;
+    font-size: 17px;
     font-weight: 400;
     color: var(--gray);
     text-align: justify;
     padding: 20px 0;
+    display: flex;
+    justify-content: space-between;
     /* border-bottom: 1px solid var(--light-gray); */
 }
 
@@ -82,6 +84,8 @@
     font-size: 11px;
     font-weight: 600;
     color: var(--primary-light);
+    display: flex;
+    align-items: center;
 }
 
 .post_actions
@@ -106,6 +110,8 @@
     border-radius: 4px;
     text-transform: capitalize;
     background: #C6426E;  /* fallback for old browsers */
+    display: flex;
+    align-items: center;
 }
 
 /* .post_actions > div:hover
