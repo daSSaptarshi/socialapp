@@ -8,6 +8,6 @@ export class ConfigService {
   constructor() { }
 
   config = {
-    apiBaseURL : 'http://localhost:3000'
+    apiBaseURL : ''
 }
 }
