@@ -12,6 +12,7 @@ export class NavbarComponent implements OnInit {
   isAdmin = sessionStorage.getItem("isAdmin")
   username = sessionStorage.getItem("userName")
   role = sessionStorage.getItem('role')
+  profileImage = sessionStorage.getItem('image')
   userCount = 0;
   postCount = 0
   constructor(private userService:UserService,private postService: PostService) { }
@@ -19,20 +20,20 @@ export class NavbarComponent implements OnInit {
   ngOnInit(): void {
     if(sessionStorage.getItem('role') == 'admin')
     {
-      this.userService.getUserCount()
-      .subscribe(data =>
-        {
-            this.userCount = data['userCount']
-        })
+      // this.userService.getUserCount()
+      // .subscribe(data =>
+      //   {
+      //       this.userCount = data['userCount']
+      //   })
 
-      setInterval(()=>
-      {
-        this.postService.getPostCount()
-      .subscribe(data =>
-        {
-            this.postCount = data['postCount']
-        })
-      },10*1000)
+      // setInterval(()=>
+      // {
+      //   this.postService.getPostCount()
+      // .subscribe(data =>
+      //   {
+      //       this.postCount = data['postCount']
+      //   })
+      // },10*1000)
     }
   }
 

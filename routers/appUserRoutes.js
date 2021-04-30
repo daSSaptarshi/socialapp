@@ -1,8 +1,36 @@
 // Import modules
 const express       = require('express');
-const approuter        = express.Router();
+const approuter     = express.Router();
 const CONFIG        = require('../config');
 const User          = require('../models/UserSchema');
+const Post          = require('../models/PostSchema');
+const Comment       = require('../models/CommentSchema');
+
+approuter.delete(CONFIG.apis.apiForProfile.delete, async (req, res) =>
+{
+    try
+    {
+        await Comment.findOneAndDelete({ "creater" : req.params.id })
+        await Post.findOneAndDelete({ "creater" : req.params.id })
+        await User.findByIdAndDelete(req.params.id)
+        res.status(200).json({ userId : req.params.id});
+    }
+    catch (error) {
+        res.status(500).json({ message : err.message})
+    }
+})
+
+approuter.get(CONFIG.apis.apiForProfile.allUsers, async (req, res) =>
+{
+    try 
+    {
+        res.status(200).send({ data : await User.find({ 'role' : 'user' }).select( { '_id' : 1, 'name' : 1, 'email' : 1, 'profileImage' : 1 } ) })
+    } 
+    catch (error) {
+        res.status(500).json({ message : err.message})
+    }
+})
+
 
 approuter.get(CONFIG.apis.apiForProfile.count, async (req, res) =>
 {
@@ -32,7 +60,8 @@ approuter.post(CONFIG.apis.apiForProfile.register, async (req, res) =>
                     email   : req.body.email,
                     address : req.body.address,
                     phone   : req.body.phone,
-                    password: req.body.password
+                    password: req.body.password,
+                    profileImage : req.body.image
                 }
             )
     
@@ -77,7 +106,8 @@ approuter.post(CONFIG.apis.apiForProfile.signin, async (req, res) =>
                 id : user[0]._id,
                 isLoggedIn : true,
                 isAdmin : user[0].role == "admin",
-                role : user[0].role
+                role : user[0].role,
+                profileImage : user[0].profileImage
             })
             else
                 res.status(401).json({message : "Password does not mach"})

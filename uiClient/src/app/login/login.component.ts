@@ -27,12 +27,13 @@ export class LoginComponent implements OnInit {
     this.userService.signinUser(this.loginForm.value)
     .subscribe((data) =>
     {
-      this.router.navigate(['/posts']);
+      this.router.navigate(['/home']);
       sessionStorage.setItem("email", data["username"])
       sessionStorage.setItem("userId", data["id"])
       sessionStorage.setItem("isAdmin", data["isAdmin"])
       sessionStorage.setItem("userName", data['name'])
       sessionStorage.setItem("role", data['role'])
+      sessionStorage.setItem("image", data['profileImage'] == null?'':data['profileImage'])
     });
   }
 

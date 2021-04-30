@@ -98,16 +98,35 @@ background: linear-gradient(to bottom, #C6426E, #642B73); /* W3C, IE 10+/ Edge, 
     outline: none;
     color: #ffffff;
     padding: 10px 0;
+    background: #00000030;
+    padding: 15px 0;
+}
+
+.links span .fa
+{
+    font-size: 20px;
 }
 
 .links span:hover,
 .link_selected
 {
-    background: #00000030;
+    background: #00000050 !important;
+    position: relative;
+    /* width: 100%; */
 }
 
-.links span.active
+.link_selected::after
 {
-    /* color: var(--primary-light); */
-    font-size: 17px;
+    content: '';
+    width: 0;
+    height: 0;
+    border: 13px solid #54214e;
+    /* border-left-color: transparent; */
+    border-top-color: transparent;
+    border-right-color: transparent;
+    border-bottom-color: transparent;
+    left: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+    position: absolute;
 }

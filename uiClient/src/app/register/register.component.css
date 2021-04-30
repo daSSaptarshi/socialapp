@@ -152,3 +152,21 @@
     box-shadow: 0px 0px 10px #3333335e;
     transition: .3s;
 }
+
+#profileImage
+{
+    position: relative;
+}
+
+#profileImage::after
+{
+    content: 'Please choose a square, center aligned photo for best experience';
+    position: absolute;
+    top: calc(100% + 5px);
+    left: -5px;
+    width: 100%;
+    font-size: 12px;
+    color: #ffffff80;
+    text-indent: 3px;
+    white-space: pre-wrap;
+}

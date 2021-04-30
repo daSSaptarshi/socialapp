@@ -25,6 +25,11 @@ const UserSchema = new mongoose.Schema(
         {
             type : String,
             default : 'user'
+        },
+        profileImage :
+        {
+            type : String,
+            default : null
         }
 
     }

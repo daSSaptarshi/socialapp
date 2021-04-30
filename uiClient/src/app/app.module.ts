@@ -16,6 +16,7 @@ import { CommentService } from './services/comment.service';
 import { PostService } from './services/post.service';
 import { ApproveComponent } from './approve/approve.component';
 import { ConfigService } from './services/config.service';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { ConfigService } from './services/config.service';
     PostComponent,
     RegisterComponent,
     NavbarComponent,
-    ApproveComponent
+    ApproveComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,

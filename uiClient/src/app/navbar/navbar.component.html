@@ -1,27 +1,31 @@
 <div class="navbar">
     <div class="profile_details">
-        <img src="../../assets/avatar.png" alt="" class="avatar">
-        <div class="username">Welcome<br> <span>{{username}}</span> </div>
+        <img [src]="profileImage" alt="" class="avatar" *ngIf="profileImage.startsWith('data:image')">
+        <img src="../../assets/avatar.png" alt="" class="avatar" *ngIf="!profileImage.startsWith('data:image')">
+        <div class="username"> 
+            <!-- <i class="far fa-id-badge" style="font-size: 30px !important;"></i> <br><br>  -->
+            Welcome<br> <span>{{username}}</span> </div>
     </div>
 
-    <div *ngIf="role== 'admin'">
+    <!-- <div *ngIf="role== 'admin'">
         <div style="text-align: center; font-size: 18px; color: white;">
             <div style="font-size: 50px !important;">{{userCount}}</div>
             <div>Number Of Users</div>  
         </div>
-        <!-- <br>
+        <br>
         <div style="text-align: center; font-size: 18px; color: white;">
             <div style="font-size: 50px !important;">{{postCount}}</div>
             <div>Number Of Posts</div>  
-        </div> -->
-    </div>
+        </div>
+    </div> -->
     
     <!-- <div class="app_name">Socia <div>L</div>ist</div> -->
     <div class="options">
         
         <div class="links">
-            <span routerLink="/home" routerLinkActive="active" *ngIf="isAdmin == 'true'" routerLinkActive="link_selected" > <i class="fa fa-home"></i> <br> Home</span>
-            <span routerLink="/approval" routerLinkActive="active" *ngIf="isAdmin == 'true'" routerLinkActive="link_selected"><i class="fa fa-check"></i> <br>Pending For Approval</span>
+            <span routerLink="/home" *ngIf="isAdmin == 'true'" routerLinkActive="link_selected" > <i class="fa fa-home"></i> <br> Home</span>
+            <span routerLink="/dashboard" *ngIf="isAdmin == 'true'" routerLinkActive="link_selected" > <i class="fa fa-clipboard-list"></i> <br> Dashboard</span>
+            <span routerLink="/approval" *ngIf="isAdmin == 'true'" routerLinkActive="link_selected"><i class="fa fa-check"></i> <br>Pending For Approval</span>
             <span (click)="signout()"> <i class="fa fa-sign-out-alt"></i> <br>  Sign Out</span>
         </div>
     </div>

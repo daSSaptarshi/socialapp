@@ -31,6 +31,8 @@ export class HomeComponent implements OnInit {
       .subscribe(data => {
         this.refreshingData = false;
         // this.posts_data = data;
+        this.advertisementList = [];
+        this.postList = [];
         [].concat(data).forEach(item =>
           {
             item.is_advertisement ? this.advertisementList.push(item) : this.postList.push(item)
@@ -67,6 +69,8 @@ export class HomeComponent implements OnInit {
           this.postService.getAllPosts()
             .subscribe(data => {
               this.refreshingData = false;
+              this.advertisementList = [];
+              this.postList = [];
               [].concat(data).forEach(item =>
                 {
                   item.is_advertisement ? this.advertisementList.push(item) : this.postList.push(item)

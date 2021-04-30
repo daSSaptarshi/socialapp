@@ -1,0 +1,168 @@
+.container
+{
+    display: grid;
+    grid-template-columns: 250px 1fr;
+    column-gap: 50px;
+    width: 90%;
+    left: 5%;
+    position: relative;
+    padding: 50px 0 30px 0;
+}
+.metadata
+{
+    display: flex;
+}
+
+.metadata_card
+{
+    border: 1px dashed var(--primary-light);
+    width: 350px;
+    height: 120px;
+    border-radius: 5px;
+    margin-right: 25px;
+    position: relative;
+}
+
+.metadata_card .card_icon
+{
+    font-size: 40px !important;
+    color: var(--primary-light);
+    position: absolute;
+    left: 30px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+.metadata_card .card_data
+{
+    font-size: 50px !important;
+    font-weight: 500;
+    color: var(--primary-light);
+    position: absolute;
+    right: 20px;
+    top: 35%;
+    transform: translateY(-50%);
+}
+.metadata_card .card_label
+{
+    font-size: 14px;
+    color: #7f7f7f;
+    position: absolute;
+    right: 20px;
+    top: 60%;
+}
+
+.users_list
+{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 15px 15px;
+    padding-top: 40px;
+}
+.user
+{
+    display: flex;
+    flex-direction: column;
+    border: 1px solid var(--primary-light);
+    align-items: center;
+    justify-content: flex-start;
+    /* padding: 15px; */
+    border-radius: 5px;
+    position: relative;
+    padding-bottom: 15px;
+}
+.user > img
+{
+    width: 100px;
+    border-radius: 50%;
+    box-shadow: 0px 0px 5px #7f7f7f;
+    align-self: center;
+    position: absolute;
+    top: 48px;
+}
+/* .user > div
+{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+} */
+.user > div > div
+{
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.user > div > div:last-child
+{
+    color: #1f1f1f;
+}
+.username
+{
+    font-size: 21px;
+    color: var(--primary-light);
+    font-weight: 500;
+}
+.username > i
+{
+    font-size: 21   px !important;
+}
+.user > div i
+{
+    color: var(--primary-light);
+    font-size: 18px;
+}
+.user button
+{
+    text-align: center;
+    height: 50px;
+    width: 50px;
+    font-size: 18px !important;
+    border-radius: 50%;
+    cursor: pointer;
+    margin-top: 10px;
+    border: 1px solid var(--primary-light);
+    background: transparent;
+    color: var(--primary-light);
+}
+.user button:hover
+{
+    border: none;
+    background: var(--primary-dark);
+    color: #ffffff;
+    text-align: center;
+    height: 50px;
+    width: 50px;
+    font-size: 18px !important;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: .3s;
+    margin-top: 10px;
+}
+
+.refreshing_message
+{
+    font-size: 19px;
+    color: #7f7f7f;
+    display: flex;
+    align-items: center;
+    margin-top: 30px;
+}
+
+.refreshing_message .fa
+{
+    -webkit-animation: rotation 2s infinite linear;
+    animation:  rotation 2s infinite linear;
+    color: var(--primary-light);
+    font-size: 25px;
+}
+
+@-webkit-keyframes rotation {
+    from {-webkit-transform: rotate(0deg);}
+    to   {-webkit-transform: rotate(359deg);}
+}
+
+
+@keyframes rotation {
+    from {-webkit-transform: rotate(0deg);}
+    to   {-webkit-transform: rotate(359deg);}
+}

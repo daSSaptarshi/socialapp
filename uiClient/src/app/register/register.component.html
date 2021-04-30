@@ -6,14 +6,31 @@
             <span [ngClass]="isOrg?null:'selected'" (click)="chnangeRole(false)">As Individual</span>
             <span [ngClass]="isOrg?'selected':null" (click)="chnangeRole(true)">As Organization</span>
         </div> -->
+        
         <form class="form" [formGroup] = "registerForm" (ngSubmit)="onSubmitRegisterForm()">
-            <input type="text" name="name" id="" placeholder="Your Name" autocomplete="off" formControlName="name">
-            <input type="text" name="email" id="" placeholder="Your Email" autocomplete="off" formControlName="email">
-            <input type="text" name="address" id="" placeholder="Your Address" autocomplete="off"formControlName = "address">
-            <input *ngIf="isOrg" type="text" name="website" id="" placeholder="Website" formControlName="website">
-            <input type="text" name="phone" id="" placeholder="Phone Number" autocomplete="off" formControlName="phone">
-            <input type="password" name="password" id="" placeholder="Password" formControlName="password">
+            <input type="text" name="name" placeholder="Your Name" autocomplete="off" formControlName="name">
+            <input type="text" name="email" placeholder="Your Email" autocomplete="off" formControlName="email">
+            <input type="text" name="address" placeholder="Your Address" autocomplete="off"formControlName = "address">
+            <input *ngIf="isOrg" type="text" name="website" placeholder="Website" formControlName="website">
+            <input type="text" name="phone" placeholder="Phone Number" autocomplete="off" formControlName="phone">
+            <input type="password" name="password" placeholder="Password" formControlName="password">
             <!-- <input type="password" name="password" id="" placeholder="Confirm password"> -->
+            
+                <img [src]="profileImage" alt="" *ngIf="profileImage != ''" style="width: 100px; border-radius: 50%;">
+                <input type='file' id="recipe_image" style="display:none" accept=".jpg,.jpeg,.png" (change)="useImage($event)" >
+                <label *ngIf='profileImage == ""' 
+                        for="recipe_image" 
+                        id="profileImage" 
+                        style="width: 100% ;cursor: pointer ;padding: 10px 20px;border-radius: 5px;color: #ffffff;border: 1px solid #ffffff;font-weight: 500;display: block;margin-top: 20px;" > 
+                        <i class="far fa-file-image"></i> 
+                        Add Profile Photo
+                </label>
+                <label *ngIf='profileImage != ""'
+                        (click)="removeImage()"
+                        style="cursor: pointer ;padding: 10px 20px;border-radius: 5px;color: #ffffff;border: 1px solid #ffffff;font-weight: 500;display: block;width: 100%;margin-top: 20px;" > 
+                        <i class="far fa-trash-alt"></i>
+                        Remove Profile Photo
+                </label>
             <button class="submit_form" [disabled]="!registerForm.valid"  >Sign Up</button>
             <span routerLink="/login">Already have an account? Sign In</span>
         </form>

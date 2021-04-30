@@ -13,7 +13,9 @@ export class UserService {
     register : '/register',
     signin : '/signin',
     details : '/details',
-    getCount : '/getUserCount'
+    getCount : '/getUserCount',
+    getAllUser : '/getAllUser',
+    deleteUser : '/removeUser'
   }
   private isLoggedIn = false;
 
@@ -22,6 +24,11 @@ export class UserService {
   constructor(public httpservice : HttpClient, private router:Router, configService : ConfigService ) {
     this.httpService = httpservice;
     this.baseUrl = `${configService.config.apiBaseURL}${this.baseUrl}`
+   }
+
+   getAllUsers()
+   {
+     return this.httpservice.get(`${this.baseUrl}${this.urls.getAllUser}`)
    }
 
   registerUser(data)
@@ -61,5 +68,10 @@ export class UserService {
   getUserCount()
   {
     return this.httpservice.get(`${this.baseUrl}${this.urls.getCount}`);
+  }
+
+  deleteUser(id)
+  {
+    return this.httpService.delete(`${this.baseUrl}${this.urls.deleteUser}/${id}`)
   }
 }

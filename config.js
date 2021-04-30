@@ -1,5 +1,6 @@
 const CONFIG = {
     MONGO       : 'mongodb+srv://dbuser:abcd@mastercluster.usel1.mongodb.net/social-awarness-app?retryWrites=true&w=majority',
+    MONGOLocal  : 'mongodb://localhost:27017/social-awarness-app',
     PORT        :  process.env.PORT || 3000,
     apis        : {
         apiForProfile :
@@ -7,7 +8,9 @@ const CONFIG = {
                 register    : `/register`,
                 signin      : `/signin`,
                 details     : `/details`,
-                count       : `/getUserCount`
+                count       : `/getUserCount`,
+                allUsers    : `/getAllUser`,
+                delete      : `/removeUser/:id`
             },
         apiForPost    :
             {

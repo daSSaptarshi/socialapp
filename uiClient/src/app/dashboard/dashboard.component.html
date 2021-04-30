@@ -1,0 +1,33 @@
+<div class="container">
+    <navbar></navbar>
+    <div class="dashboard_container">
+        <div class="metadata">
+            <div class="metadata_card">
+                <div class="card_icon"  *ngIf='userCount != -1'> <i class="fa fa-users"></i> </div>
+                <div class="card_data"  *ngIf='userCount != -1'> {{userCount}} </div>
+                <!-- <div class="card_data"  *ngIf='userCount != -1'> 7 </div> -->
+                <div class="card_label"  *ngIf='userCount != -1'> Total User Existing On System </div>
+                <div class="refreshing_message" style="margin-top: 0;"  *ngIf='userCount == -1'> <i class="fa fa-spinner"></i> &nbsp; Loading Count Of Users</div>
+            </div>
+            <!-- <div>
+                <span></span>
+            </div> -->
+        </div>
+        <div class="refreshing_message"  *ngIf='refreshingData'> <i class="fa fa-spinner"></i> &nbsp; Loading List Of Users</div>
+        <div class="users_list">
+            <div class="user" *ngFor="let user of usersList">
+                <img [src]="user.profileImage" alt="" class="profile_image">
+                <div style="height: 100px;
+                width: 100%;
+                background: var(--primary-light);
+                margin-bottom: 65px;"></div>
+                <div>
+                    <div class="username"><i class="far fa-id-badge fa-fw"></i> {{user.name}} </div>
+                    <div><i class="fa fa-envelope-open fa-fw"></i> {{user.email}} </div>
+                    <!-- <span>  </span> -->
+                </div>
+                <button (click)="deleteUser(user._id)"> <i class="far fa-trash-alt"></i></button>
+            </div>
+        </div>
+    </div>
+</div>
